@@ -24,7 +24,7 @@ def load_matrix(path):
     return matrix_
 
 
-def print_and_save_results(filename, alignments, title):
+def print_and_save_results(filename, alignments, title, print_results=True):
     """
     Prints and saves n optimal alignments to an output file
 
@@ -35,10 +35,11 @@ def print_and_save_results(filename, alignments, title):
     """
     with open(filename, 'w') as file:  # Changed to 'a' mode to append to the file
         for i, (a1, a2, score) in enumerate(alignments, 1):
-            print(f"{title} alignment no. {i}:")
-            print(f"{a1}")
-            print(f"{a2}")
-            print(f"Score: {score}\n")
+            if print_results:
+                print(f"{title} alignment no. {i}:")
+                print(f"{a1}")
+                print(f"{a2}")
+                print(f"Score: {score}\n")
 
             file.write(f"{title} alignment no. {i}:\n")
             file.write(f"{a1}\n")
